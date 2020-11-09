@@ -2,8 +2,9 @@ import {useState} from 'react'
 import Head from 'next/head'
 import Parser from "html-react-parser";
 import Nav from "../Components/Nav";
+import Social from "../Components/Social";
 
-export default function Home({nav,items}) {
+export default function Home({nav,items,socials}) {
 
     const [avatar,setAvatar] = useState('qamar-avatar');
 
@@ -39,12 +40,7 @@ export default function Home({nav,items}) {
                                 {items.find(i => i.name == "function") != undefined && Parser(items.find(i => i.name == "function").value)}
                             </h3>
 
-                            <div className="social">
-                                <ul>
-                                    <li><a className="ukie-icons hover-animate" href={process.env.socials.linkedin} target={'_blank'}><i
-                                        className="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
+                            <Social socials={socials} />
 
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import config from '../Config/contact'
 import axios from 'axios'
+import Social from "../Components/Social";
 
 export default class contact extends React.Component{
 
@@ -155,12 +156,7 @@ export default class contact extends React.Component{
                                     </tr>
                                 </table>
 
-                                <div class="social">
-                                    <ul>
-                                        <li><a class="ukie-icons hover-animate" href={process.env.socials.linkedin} target={'_blank'}><i class="fa fa-linkedin"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <Social socials={this.props.socials} />
 
                             </div>
                         </div>

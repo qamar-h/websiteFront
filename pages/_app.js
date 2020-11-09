@@ -27,7 +27,8 @@ export default class MyApp extends React.Component {
         this.state = {
             page:'index',
             loading:true,
-            items:[]
+            items:[],
+            socials:[]
         }
     }
 
@@ -36,7 +37,7 @@ export default class MyApp extends React.Component {
      */
     componentDidMount() {
         const {Component} = this.props;
-        this.loadItem();
+        this.loadData();
         if(Component.name != "Home") {
             this.setState({page:Component.name})
         }
@@ -47,9 +48,11 @@ export default class MyApp extends React.Component {
      *
      * @returns {Promise<void>}
      */
-    loadItem() {
+    loadData() {
         return axios.get(process.env.api + '/items')
             .then(res => this.setState({items:res.data['hydra:member']}))
+            .then(() => axios.get(process.env.api + '/socials'))
+            .then(res => this.setState({socials:res.data['hydra:member']}) )
             .then(() => this.setState({loading:false}))
             .catch(error => console.log(error))
     }
@@ -87,7 +90,7 @@ export default class MyApp extends React.Component {
         switch (this.state.page) {
 
             case  'index':
-                return <Index nav={(page) => this.nav(page) } items={this.state.items} />
+                return <Index nav={(page) => this.nav(page) } items={this.state.items} socials={this.state.socials} />
             case  'profile':
                 return <Profile nav={(page) => this.nav(page) } items={this.state.items} />
             case  'inprogress':
@@ -95,7 +98,7 @@ export default class MyApp extends React.Component {
             case 'resume':
                 return <Resume nav={(page) => this.nav(page)} items={this.state.items} />
             case 'contact':
-                return <Contact nav={(page) => this.nav(page)} items={this.state.items} />
+                return <Contact nav={(page) => this.nav(page)} items={this.state.items} socials={this.state.socials}  />
             default:
                 return <ERROR404 nav={(page) => this.nav(page)} items={this.state.items} />
 

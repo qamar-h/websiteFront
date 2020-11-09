@@ -18,6 +18,7 @@ import Profile from "./profile";
 import Inprogress from "./inprogress"
 import ERROR404 from "./404"
 import axios from 'axios';
+import router,{ useRouter } from 'next/router'
 
 
 export default class MyApp extends React.Component {
@@ -36,10 +37,13 @@ export default class MyApp extends React.Component {
      * Chargement des items
      */
     componentDidMount() {
-        const {Component} = this.props;
         this.loadData();
-        if(Component.name != "Home") {
-            this.setState({page:Component.name})
+        let path = router.pathname.split('/');
+        if(path.length == 2){
+            path = path[1];
+        }
+        if(path != "") {
+            this.setState({page:path})
         }
     }
 

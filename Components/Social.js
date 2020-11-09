@@ -1,5 +1,4 @@
 export default function social({socials}) {
-    console.log(socials)
     return (
         <div className="social">
             <ul>

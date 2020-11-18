@@ -26,7 +26,7 @@ export default function inprogress({nav,items}) {
 
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-lg-12 text-center">
-                        <img src="./assets/img/inprogress.gif" alt="UkieWeb" />
+                        <img style={{width:"100%"}} src="./assets/img/inprogress.gif" />
                         <h3 className="title1">Page en développement</h3>
                         <p>Encore un peu de patience ...</p>
                         <a href="#" className="btn btn-color" onClick={() => nav('index')}>Retour à l'accueil</a>

@@ -25,7 +25,7 @@ export default function err404({nav}) {
 
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-lg-12 text-center">
-                            <img style={{width:"100%"}} src="./assets/img/404.gif"  />
+                            <img style={{maxWidth:"100%"}} src="./assets/img/404.gif"  />
                                 <h3 className="title1">Page non trouvée</h3>
                                 <p>The page you are looking for was moved, removed, renamed or
                                     might never existed.</p>
